@@ -1,0 +1,50 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html { -webkit-tap-highlight-color: transparent; }
+  body { font-family: 'Instrument Sans', system-ui, sans-serif; font-size: 16px; line-height: 1.55; }
+  h1, h2, h3, .font-display { font-family: 'Cormorant Garamond', Georgia, serif; letter-spacing: -0.01em; }
+  :focus-visible { outline: 2px solid #C9A34E; outline-offset: 2px; border-radius: 6px; }
+  ::selection { background: #E6C97A; color: #0E0637; }
+}
+
+@layer components {
+  .btn { @apply inline-flex items-center justify-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold transition-colors disabled:opacity-50 disabled:cursor-not-allowed; }
+  .btn-primary { @apply btn bg-emerald text-white hover:bg-emerald-600; }
+  .btn-gold { @apply btn bg-gold text-night hover:bg-gold-light; }
+  .btn-outline { @apply btn border border-night/15 text-night hover:border-night/40 bg-white; }
+  .btn-ghost-light { @apply btn border border-gold/50 text-gold-light hover:bg-gold/10; }
+  .btn-ghost { @apply btn text-night hover:bg-night/5; }
+  .btn-danger { @apply btn bg-white border border-red-200 text-red-700 hover:bg-red-50; }
+  .btn-sm { @apply px-3.5 py-1.5 text-xs; }
+  .input { @apply w-full rounded-xl border border-dawn-300 bg-white px-3.5 py-2.5 text-[15px] text-ink placeholder:text-ink-soft focus:border-emerald focus:outline-none focus:ring-2 focus:ring-emerald/15; }
+  .label { @apply mb-1.5 block text-sm font-medium text-ink; }
+  .panel { @apply rounded-2xl border border-dawn-200 bg-white; }
+  .chip { @apply inline-flex items-center gap-1 rounded-full px-2.5 py-0.5 text-xs font-medium; }
+  .link { @apply text-emerald underline decoration-emerald/30 underline-offset-2 hover:decoration-emerald; }
+}
+
+/* Lesson / long-form prose */
+.prose-gw { color: #1F1B2E; line-height: 1.75; max-width: 68ch; }
+.prose-gw h1, .prose-gw h2 { font-family: 'Cormorant Garamond', serif; color: #0E0637; font-weight: 600; font-size: 1.9rem; margin: 1.6rem 0 .6rem; line-height: 1.2; }
+.prose-gw h3 { font-family: 'Cormorant Garamond', serif; color: #0E0637; font-weight: 600; font-size: 1.4rem; margin: 1.4rem 0 .4rem; }
+.prose-gw p { margin: .8rem 0; }
+.prose-gw ul, .prose-gw ol { margin: .8rem 0 .8rem 1.4rem; }
+.prose-gw ul { list-style: disc; } .prose-gw ol { list-style: decimal; }
+.prose-gw li { margin: .3rem 0; }
+.prose-gw blockquote { border-left: 3px solid #C9A34E; padding: .2rem 0 .2rem 1rem; font-family: 'Cormorant Garamond', serif; font-size: 1.25rem; font-style: italic; color: #1B1250; }
+.prose-gw a { color: #0B6E4F; text-decoration: underline; }
+.prose-gw strong { color: #0E0637; }
+.prose-gw code { background: #F4F2F9; padding: .1rem .35rem; border-radius: 4px; font-size: .9em; }
+
+/* Hero growth rings — the one orchestrated moment */
+@keyframes ring-grow { from { transform: scale(.55); opacity: 0; } to { transform: scale(1); opacity: var(--o, 1); } }
+@keyframes rise { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+.growth-ring { position: absolute; opacity: var(--o, 1); border-radius: 9999px; border: 1px solid rgba(201,163,78,.34); animation: ring-grow 1.6s cubic-bezier(.2,.7,.2,1) both; }
+.rise { animation: rise .9s cubic-bezier(.2,.7,.2,1) both; }
+@media (prefers-reduced-motion: reduce) { .growth-ring, .rise { animation: none; } }
+
+/* LiveKit room theming */
+[data-lk-theme] { --lk-bg: #0E0637; --lk-bg2: #140A47; --lk-bg3: #1B1250; --lk-accent-bg: #0B6E4F; --lk-control-bg: #1B1250; --lk-border-radius: 12px; font-family: 'Instrument Sans', sans-serif; }
